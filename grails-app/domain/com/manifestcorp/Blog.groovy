@@ -2,12 +2,12 @@ package com.manifestcorp
 
 class Blog {
 
-    String name
-    String note
+    String title
+    String text
     Date dateCreated
 
     static constraints = {
-        name(blank:false)
-        note(maxSize:1000, widget:'textarea', nullable: true)
+        title(blank:false)
+        text(maxSize:1000, widget:'textarea', nullable: false)
     }
 }
