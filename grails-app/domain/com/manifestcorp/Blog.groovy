@@ -9,6 +9,5 @@ class Blog {
     static constraints = {
         name(blank:false)
         note(maxSize:1000, widget:'textarea', nullable: true)
-        //This is a comment
     }
 }
