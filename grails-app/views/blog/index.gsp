@@ -18,7 +18,9 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:table collection="${blogList}" />
+            <g:if test="${blogList != null}">
+                <f:table collection="${blogList.reverse()}" />
+            </g:if>
 
             <div class="pagination">
                 <g:paginate total="${blogCount ?: 0}" />
