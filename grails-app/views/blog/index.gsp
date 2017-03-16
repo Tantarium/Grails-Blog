@@ -9,9 +9,20 @@
         <a href="#list-blog" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+                <li>
+                    <a href="${createLink(uri: '/')}">
+                        <g:img dir="images" file="Home-icon.png" height="20" width="20" />
+                         <g:message code="default.home.label"/>
+                     </a>
+                </li>
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /> Entry</g:link></li>
-                <li><g:link class="search" action="search">Search</g:link></li>
+                <li>
+                    <g:link class="search" action="search">
+                        <g:img dir="images" file="search-icon.png" height="20" width="20" />
+                        Search
+                    </g:link>
+                </li>
+
             </ul>
         </div>
         <div id="list-blog" class="content scaffold-list" role="main">
