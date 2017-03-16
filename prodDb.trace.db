@@ -1,0 +1,6 @@
+2017-03-16 10:26:20 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "TEXT VARCHAR(1000) NOT NULL": "STRINGDECODE('Se kajutta kalassa sisassa he. Kevaalla penkille hajoaisi loi tupaanne jai kun. Ehtymatta jalessaan jaa huonoista ... (3905)"; SQL statement:
+insert into blog (id, version, date_created, text, title) values (null, ?, ?, ?, ?) [22001-193]
+2017-03-16 10:29:12 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "TEXT VARCHAR(1000) NOT NULL": "STRINGDECODE('For norland produce age wishing. To figure on it spring season up. Her provision acuteness had excellent two why i... (3672)"; SQL statement:
+insert into blog (id, version, date_created, text, title) values (null, ?, ?, ?, ?) [22001-193]

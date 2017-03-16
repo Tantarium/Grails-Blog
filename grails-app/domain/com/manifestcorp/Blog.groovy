@@ -8,6 +8,6 @@ class Blog {
 
     static constraints = {
         title(blank:false)
-        text(maxSize:1000, widget:'textarea', nullable: false)
+        text(widget:'textarea', nullable: false)
     }
 }
