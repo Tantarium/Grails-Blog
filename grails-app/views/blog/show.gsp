@@ -15,7 +15,13 @@
                          <g:message code="default.home.label"/>
                      </a>
                 </li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /> Entries</g:link></li>
+                <li>
+                    <g:link action="create">
+                        <g:img dir="image" file="pen-and-paper.png" height="20" width="20" />
+                        <g:message code="default.new.label" args="[entityName]" />
+                         Entry
+                     </g:link>
+                 </li>
             </ul>
         </div>
         <div id="show-blog" class="content scaffold-show" role="main">

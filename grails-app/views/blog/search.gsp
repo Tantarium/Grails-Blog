@@ -20,20 +20,19 @@
         <br />
         <br />
 
-        <h2>Postular Search</h2>
+        <h2>Search</h2>
 
         <g:form controller="blog" method="get" >
             <input type='text' name='value' value="${value}" />
             <g:actionSubmit value="Search" />
         </g:form>
 
-        Results For You:
+        Results:
 
         <ol>
             <g:each var="blog" in="${blogs}">
-                <li>
-                    ${blog?.title}
-                </li>
+                    <a href= ${blog?.title}
+                    <br />
             </g:each>
         </ol>
     </body>

@@ -97,7 +97,6 @@ class BlogController {
 
     def search = {
         def blogs = Blog.findAllByTitleLike("%${params.value}%")
-        println "Size of list: " + blogs.size()
         render(view:'search', model: [value: params.value, blogs: blogs])
     }
 
