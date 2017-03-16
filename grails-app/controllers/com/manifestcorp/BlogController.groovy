@@ -95,6 +95,11 @@ class BlogController {
         }
     }
 
+    def search = {
+        def blogs = Blog.findAllByTitleLike("${params.value}%")
+        render(view:'search', model: [value: params.value, blogs: blogs])
+    }
+
     protected void notFound() {
         request.withFormat {
             form multipartForm {
