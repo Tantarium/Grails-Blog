@@ -4,3 +4,9 @@ insert into blog (id, version, date_created, text, title) values (null, ?, ?, ?,
 2017-03-16 10:29:12 jdbc[12]: exception
 org.h2.jdbc.JdbcSQLException: Value too long for column "TEXT VARCHAR(1000) NOT NULL": "STRINGDECODE('For norland produce age wishing. To figure on it spring season up. Her provision acuteness had excellent two why i... (3672)"; SQL statement:
 insert into blog (id, version, date_created, text, title) values (null, ?, ?, ?, ?) [22001-193]
+2017-03-16 12:16:10 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "TEXT VARCHAR(1000) NOT NULL": "STRINGDECODE('When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others mark... (1098)"; SQL statement:
+insert into blog (id, version, date_created, text, title) values (null, ?, ?, ?, ?) [22001-193]
+2017-03-16 12:16:17 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "TEXT VARCHAR(1000) NOT NULL": "STRINGDECODE('When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others mark... (1046)"; SQL statement:
+insert into blog (id, version, date_created, text, title) values (null, ?, ?, ?, ?) [22001-193]

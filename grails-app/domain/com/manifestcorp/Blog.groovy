@@ -10,4 +10,8 @@ class Blog {
         title(blank:false)
         text(widget:'textarea', nullable: false)
     }
+
+    static mapping = {
+        sort dateCreated: 'desc'
+    }
 }

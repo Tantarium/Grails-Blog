@@ -20,7 +20,7 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
             <g:if test="${blogList != null}">
-                <f:table collection="${blogList.reverse()}" />
+                <f:table collection="${blogList}" />
             </g:if>
 
             <div class="pagination">

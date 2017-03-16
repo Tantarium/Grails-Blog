@@ -15,20 +15,19 @@
         <br />
         <br />
 
-        <h2>Post Search</h2>
+        <h2>Postular Search</h2>
 
-        <g:form controller="blog" method="post" >
+        <g:form controller="blog" method="get" >
             <input type='text' name='value' value="${value}" />
             <g:actionSubmit value="Search" />
         </g:form>
 
-        Results:
+        Results For You:
 
         <ol>
-            <g:each var="blog" in="${BlogList}">
-                <li>${blog?.title}
-                    <g:if test="${blog.text}">- </g:if>
-                    ${blog?.text}
+            <g:each var="blog" in="${blogs}">
+                <li>
+                    ${blog?.title}
                 </li>
             </g:each>
         </ol>
