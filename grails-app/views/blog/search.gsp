@@ -31,7 +31,7 @@
 
         <ol>
             <g:each var="blog" in="${blogs}">
-                    <a href= ${blog?.title}
+                    <a href="/blog/show/${blog?.id}">${blog?.title}</a>
                     <br />
             </g:each>
         </ol>
