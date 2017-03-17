@@ -18,22 +18,32 @@
         </div>
 
         <br />
-        <br />
 
-        <h2>Search</h2>
+        <h2>Search For Blog Entries</h2>
 
         <g:form controller="blog" method="get" >
             <input type='text' name='value' value="${value}" />
             <g:actionSubmit value="Search" />
         </g:form>
 
-        Results:
+        Results: <br />
 
-        <ol>
-            <g:each var="blog" in="${blogs}">
-                    <a href="/blog/show/${blog?.id}">${blog?.title}</a>
+        <g:each var="blog" in="${blogs}">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="/blog/show/${blog?.id}">
+                        <h4>${blog.title}</h4>
+                    </a>
+                </div>
+                <div class="panel-body">
+                    <b>Author:</b> ${blog.author}
                     <br />
-            </g:each>
-        </ol>
+                    <b>Date Created:</b> ${blog.dateCreated}
+                </div>
+                <div class="panel-footer">
+                    ${blog.description}
+                </div>
+            </div>
+        </g:each>
     </body>
 </html>
