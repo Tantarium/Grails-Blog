@@ -8,7 +8,7 @@ module Navigation
     visit_page(LoginPage)
   end
 
-  def click_on_create_button
+  def click_on_create_link
     @browser.li(:text => 'New Blog Entry').click
   end
 
