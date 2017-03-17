@@ -1,7 +1,5 @@
 require 'page-object'
 require 'watir'
-require_relative '../workflows/random_input'
-include RandomInput
 
 module NewBlogEntry
   include PageObject::PageFactory
@@ -16,5 +14,10 @@ module NewBlogEntry
   def click_on_create_button
     on_page(Create).create
   end
+
+  def success_message_from_page
+    on_page(PostCreate).success
+  end
+
 
 end

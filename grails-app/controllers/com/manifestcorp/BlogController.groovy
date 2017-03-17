@@ -40,7 +40,7 @@ class BlogController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'blog.label', default: 'Blog'), blog.id])
+                flash.message = message(code: 'Blog created')
                 redirect blog
             }
             '*' { respond blog, [status: CREATED] }
