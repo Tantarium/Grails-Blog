@@ -36,12 +36,32 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <g:if test="${blogList != null}">
+
+            <g:each in="${blogList}" status="numberOfIndex" var="blog">
+                <div class="panel panel-default">
+                    <div id="Row ${numberOfIndex}" class="panel-heading">
+                        <a href="/blog/show/${blog?.id}">
+                            <h4>${blog.title}</h4>
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <b>Author:</b> ${blog.author}
+                        <br />
+                        <b>Date Created:</b> ${blog.dateCreated}
+                    </div>
+                    <div class="panel-footer">
+                        ${blog.description}
+                    </div>
+                </div>
+
+            </g:each>
+
+<!--            <g:if test="${blogList != null}">
                 <f:table collection="${blogList}" />
             </g:if>
-
+-->
             <div class="pagination">
-                <g:paginate total="${blogCount ?: 0}" />
+                <g:paginate max="10" total="${blogCount ?: 0}" />
             </div>
         </div>
     </body>

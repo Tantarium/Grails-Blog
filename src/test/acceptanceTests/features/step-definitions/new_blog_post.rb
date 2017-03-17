@@ -17,7 +17,8 @@ end
 
 When (/^I publish a new blog post$/) do
   click_on_create_link
-  add_title_and_text
+  @title = "Random Title of Blog #{random_string(5)}"
+  add_title_and_text(@title)
   click_on_create_button
 end
 
@@ -27,5 +28,7 @@ Then (/^I am notified that the blog post was successfully added$/) do
 end
 
 And (/^the newly added blog post is at the top of the recent posts list$/) do
-  
+  click_on_home_link
+  expectedTitle = @title
+  expect(get_title_of_top_entry).to eq expectedTitle
 end

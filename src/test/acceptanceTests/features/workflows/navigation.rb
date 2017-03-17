@@ -12,4 +12,8 @@ module Navigation
     @browser.li(:text => 'New Blog Entry').click
   end
 
+  def click_on_home_link
+    @browser.li(:text => 'Home').click
+  end
+
 end

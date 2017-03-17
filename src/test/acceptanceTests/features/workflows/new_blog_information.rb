@@ -4,9 +4,11 @@ require 'watir'
 module NewBlogEntry
   include PageObject::PageFactory
 
-  def add_title_and_text
+  def add_title_and_text(title)
     on_page(Create) do |page|
-      page.title = "Random Title of Blog #{random_string(5)}"
+      page.title = title
+      page.author = "Cucumber Test #{random_string(2)}"
+      page.description = "Random string for test #{random_string(5)}"
       page.text = random_blog_text
     end
   end
@@ -17,6 +19,10 @@ module NewBlogEntry
 
   def success_message_from_page
     on_page(PostCreate).success
+  end
+
+  def get_title_of_top_entry
+    on_page(Home).top_title
   end
 
 
