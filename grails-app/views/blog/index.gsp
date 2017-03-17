@@ -40,7 +40,7 @@
             <g:each in="${blogList}" status="numberOfIndex" var="blog">
                 <div class="panel panel-default">
                     <div id="Row ${numberOfIndex}" class="panel-heading">
-                        <a href="/blog/show/${blog?.id}">
+                        <a id="${numberOfIndex}" href="/blog/show/${blog?.id}">
                             <h4>${blog.title}</h4>
                         </a>
                     </div>

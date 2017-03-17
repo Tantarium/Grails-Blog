@@ -25,5 +25,10 @@ module NewBlogEntry
     on_page(Home).top_title
   end
 
+  def delete_added_blog
+    on_page(Home).viewAdded
+    on_page(ViewBlog).delete
+    @browser.alert.ok
+  end
 
 end
