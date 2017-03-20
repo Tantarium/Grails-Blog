@@ -45,9 +45,8 @@
                         </a>
                     </div>
                     <div class="panel-body">
-                        <b>Author:</b> ${blog.author}
-                        <br />
-                        <b>Date Created:</b> ${blog.dateCreated}
+                        <div id="author ${numberOfIndex}"><b>Author:</b> ${blog.author}</div>
+                        <div id="date ${numberOfIndex}"><b>Date Created:</b> ${blog.dateCreated}</div>
                     </div>
                     <div class="panel-footer">
                         ${blog.description}
