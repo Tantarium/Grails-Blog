@@ -3,6 +3,7 @@ require 'watir'
 
 class Home
   include PageObject
+  page_url "localhost:8080"
   div(:top_title, id: 'Row 0')
   link(:viewAdded, id: '0')
 end

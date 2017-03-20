@@ -9,11 +9,13 @@ import grails.plugin.springsecurity.annotation.Secured
 class BlogController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Secured('permitAll')
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Blog.list(params), model:[blogCount: Blog.count()]
     }
 
+    @Secured('permitAll')
     def show(Blog blog) {
         respond blog
     }
@@ -96,7 +98,8 @@ class BlogController {
         }
     }
 
-    def search = {
+    @Secured('permitAll')
+    def search() {
         def blogs = Blog.findAllByTitleLike("%${params.value}%")
         render(view:'search', model: [value: params.value, blogs: blogs])
     }
