@@ -20,6 +20,8 @@ module Navigation
     on_page(Home).view
   end
 
-
+  def click_on_search_button
+    @browser.li(:text => 'Search').click
+  end
 
 end

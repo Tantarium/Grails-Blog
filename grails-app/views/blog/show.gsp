@@ -27,11 +27,9 @@
 
 
         <div id="show-blog" class="content scaffold-show" role="main">
-<!--            <h1><g:message code="default.show.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="blog" /> -->
             <div class="panel panel-default">
                 <div id="title" class="panel-heading">
                     <h2>${blog.title}</h2>
