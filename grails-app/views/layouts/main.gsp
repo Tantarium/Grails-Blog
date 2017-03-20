@@ -26,7 +26,7 @@
                 <a class="navbar-brand" href="/">
                     <i class="fa grails-icon"">
                         <asset:image src="planet.jpg" />
-                    </i> The True Genius or Insanity of Lp3
+                    </i> The Blog of The <abbr title="Larry Pohto III">Lp3</abbr>
                 </a>
             </div>
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">

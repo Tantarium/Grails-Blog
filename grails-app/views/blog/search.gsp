@@ -22,17 +22,17 @@
         <h2>Search For Blog Entries</h2>
 
         <g:form controller="blog" method="get" >
-            <input type='text' name='value' value="${value}" />
-            <g:actionSubmit value="Search" />
+            <input id="searchValue" type='text' name='value' value="${value}" />
+            <g:actionSubmit id="submitButton" value="Search" />
         </g:form>
 
         Results: <br />
 
-        <g:each var="blog" in="${blogs}">
+        <g:each var="blog" status="numberOfIndex" in="${blogs}">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a href="/blog/show/${blog?.id}">
-                        <h4>${blog.title}</h4>
+                        <div id="title ${numberOfIndex}"><h4>${blog.title}</h4></div>
                     </a>
                 </div>
                 <div class="panel-body">

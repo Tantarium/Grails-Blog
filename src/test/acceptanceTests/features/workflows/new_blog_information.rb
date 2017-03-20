@@ -26,7 +26,7 @@ module NewBlogEntry
   end
 
   def delete_added_blog
-    on_page(Home).viewAdded
+    on_page(Home).view
     on_page(ViewBlog).delete
     @browser.alert.ok
   end

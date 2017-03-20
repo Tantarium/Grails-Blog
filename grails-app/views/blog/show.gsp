@@ -24,12 +24,25 @@
                  </li>
             </ul>
         </div>
+
+
         <div id="show-blog" class="content scaffold-show" role="main">
-            <h1><g:message code="default.show.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
+                <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="blog" />
+            <div class="panel panel-default">
+                <div id="title" class="panel-heading">
+                    <h2>${blog.title}</h2>
+                </div>
+                <div id="author&dateCreated" class="panel-body">
+                    Author: ${blog.author}
+                    <br />
+                    Date Created: ${blog.dateCreated}
+                </div>
+                <div id="text" class="panel-footer">
+                    ${blog.text}
+                </div>
+            </div>
             <g:form resource="${this.blog}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.blog}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
