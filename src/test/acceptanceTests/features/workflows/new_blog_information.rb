@@ -25,8 +25,8 @@ module NewBlogEntry
     on_page(Home).top_title
   end
 
-  def delete_added_blog
-    on_page(Home).view
+  def delete_added_blog(title)
+    @browser.div(:text => title).click
     on_page(ViewBlog).delete
     @browser.alert.ok
   end

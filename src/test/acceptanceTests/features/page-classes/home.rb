@@ -15,5 +15,5 @@ class Home
   div(:eighth_date, id: 'date 7')
   div(:ninth_date, id: 'date 8')
   div(:tenth_date, id: 'date 9')
-  link(:view, id: '0')
+
 end

@@ -34,7 +34,7 @@ end
 
 When (/^I choose a blog post$/) do
   @title = get_title_off_page
-  click_on_blog_post
+  click_on_blog_post(@title)
 end
 
 Then (/^I should see the blog post$/) do
@@ -57,5 +57,9 @@ Then (/^I should see posts with that value in the title$/) do
 end
 
 Then (/^the url should contain information about the post$/) do
-
+  title = get_title_off_show_page.downcase.gsub! ' ', '-'
+  current_url = @browser.url
+  url_array = current_url.split('/')
+  title_from_page = url_array.last
+  expect(title_from_page).to eq(title)
 end

@@ -37,19 +37,19 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
 
-            <g:each in="${blogList}" status="numberOfIndex" var="blog">
+            <g:each in="${blogList}" status="numberOfIndex" var="item">
                 <div class="panel panel-default">
                     <div id="Row ${numberOfIndex}" class="panel-heading">
-                        <a id="${numberOfIndex}" href="/blog/show/${blog?.id}">
-                            <h4>${blog.title}</h4>
-                        </a>
+                        <g:link mapping="blogLink" params="[id: item.id,title: seo.convert(value:item.title)]">
+                            <div id="blog-link-${numberOfIndex}"><h4>${item.title}</h4></div>
+                        </g:link>
                     </div>
                     <div class="panel-body">
-                        <div id="author ${numberOfIndex}"><b>Author:</b> ${blog.author}</div>
-                        <div id="date ${numberOfIndex}"><b>Date Created:</b> ${blog.dateCreated}</div>
+                        <div id="author ${numberOfIndex}"><b>Author:</b> ${item.author}</div>
+                        <div id="date ${numberOfIndex}"><b>Date Created:</b> ${item.dateCreated}</div>
                     </div>
                     <div class="panel-footer">
-                        ${blog.description}
+                        ${item.description}
                     </div>
                 </div>
             </g:each>
