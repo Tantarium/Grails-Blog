@@ -43,6 +43,18 @@
                     ${blog.text}
                 </div>
             </div>
+            <g:form action="save">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                    <label class="control-label col-sm-1">Name: </label>
+                    <div class="col-sm-10"><g:textField name="commenter" /></div>
+                    <label class="control-label col-sm-1">Comment: </label>
+                    <div class="col-sm-10"><g:textArea name="commentText" /></div>
+                    </div>
+                </div>
+            </g:form>
+
+
             <g:form resource="${this.blog}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.blog}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
