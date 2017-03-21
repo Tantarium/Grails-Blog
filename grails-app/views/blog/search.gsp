@@ -28,20 +28,20 @@
 
         Results: <br />
 
-        <g:each var="blog" status="numberOfIndex" in="${blogs}">
+        <g:each var="item" status="numberOfIndex" in="${blogs}">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <a href="/blog/show/${blog?.id}">
-                        <div id="title ${numberOfIndex}"><h4>${blog.title}</h4></div>
-                    </a>
+                    <g:link mapping="blogLink" params="[id: item.id,title: seo.convert(value:item.title)]">
+                        <div id="blog-link-${numberOfIndex}"><h4>${item.title}</h4></div>
+                    </g:link>
                 </div>
                 <div class="panel-body">
-                    <b>Author:</b> ${blog.author}
+                    <b>Author:</b> ${item.author}
                     <br />
-                    <b>Date Created:</b> ${blog.dateCreated}
+                    <b>Date Created:</b> ${item.dateCreated}
                 </div>
                 <div class="panel-footer">
-                    ${blog.description}
+                    ${item.description}
                 </div>
             </div>
         </g:each>
