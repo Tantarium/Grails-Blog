@@ -959,3 +959,9 @@ select this_.id as id1_0_0_, this_.version as version2_0_0_, this_.author as aut
 org.h2.jdbc.JdbcSQLException: Value too long for column "TEXT VARCHAR(1000) NOT NULL": "STRINGDECODE('Gave read use way make spot how nor. In daughter goodness an likewise oh consider at procured wandered. Songs word... (3553)"; SQL statement:
 insert into blog (id, version, author, date_created, description, text, title) values (null, ?, ?, ?, ?, ?, ?) [22001-193]
 >>>>>>> test
+2017-03-21 11:55:29 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "TEXT VARCHAR(255) NOT NULL": "'Placing assured be if removed it besides on. Far shed each high read are men over day. Afraid we praise lively he suffer family... (401)"; SQL statement:
+insert into blog (id, version, author, date_created, description, text, title) values (null, ?, ?, ?, ?, ?, ?) [22001-193]
+2017-03-21 11:55:53 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "TEXT VARCHAR(255) NOT NULL": "'Placing assured be if removed it besides on. Far shed each high read are men over day. Afraid we praise lively he suffer family... (401)"; SQL statement:
+insert into blog (id, version, author, date_created, description, text, title) values (null, ?, ?, ?, ?, ?, ?) [22001-193]
