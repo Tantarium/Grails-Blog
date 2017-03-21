@@ -32,7 +32,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <g:link mapping="blogLink" params="[id: item.id,title: seo.convert(value:item.title)]">
-                        <div id="blog-link-${numberOfIndex}"><h4>${item.title}</h4></div>
+                        <div id="title ${numberOfIndex}"><h4>${item.title}</h4></div>
                     </g:link>
                 </div>
                 <div class="panel-body">
