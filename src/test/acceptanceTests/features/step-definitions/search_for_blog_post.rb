@@ -34,7 +34,7 @@ end
 
 When (/^I choose a blog post$/) do
   @title = get_title_off_page
-  click_on_blog_post
+  click_on_blog_post(@title)
 end
 
 Then (/^I should see the blog post$/) do

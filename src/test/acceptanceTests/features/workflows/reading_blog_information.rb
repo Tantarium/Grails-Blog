@@ -26,7 +26,8 @@ module ReadingBlog
   def clean_up_blogs_created
     for i in 0..9
       visit_page(Home)
-      on_page(Home).view
+      title = get_title_off_page
+      @browser.div(:text => title).click
       on_page(ViewBlog).delete
       @browser.alert.ok
     end

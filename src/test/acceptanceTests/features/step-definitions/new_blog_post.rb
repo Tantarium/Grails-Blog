@@ -31,5 +31,5 @@ And (/^the newly added blog post is at the top of the recent posts list$/) do
   click_on_home_link
   expectedTitle = @title
   expect(get_title_of_top_entry).to eq expectedTitle
-  delete_added_blog
+  delete_added_blog(@title)
 end

@@ -16,8 +16,8 @@ module Navigation
     @browser.li(:text => 'Home').click
   end
 
-  def click_on_blog_post
-    on_page(Home).view
+  def click_on_blog_post(title)
+    @browser.div(:text => title).click
   end
 
   def click_on_search_button
