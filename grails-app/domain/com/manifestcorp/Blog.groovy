@@ -12,7 +12,7 @@ class Blog {
         title(blank: false)
         author(nullable: false)
         description(nullable: false)
-        text(widget:'textarea', nullable: false)
+        text(widget:'textarea', nullable: false, size: 0..2147483646)
     }
 
     static mapping = {
