@@ -40,9 +40,9 @@
             <g:each in="${blogList}" status="numberOfIndex" var="item">
                 <div class="panel panel-default">
                     <div id="Row ${numberOfIndex}" class="panel-heading">
-
-                            <a href ="/blog/show/${item.id}"><div id="blog-link-${numberOfIndex}"><h4>${item.title}</h4></div></a>
-
+                        <g:link mapping="blogLink" params="[id: item.id,title: seo.convert(value:item.title)]">
+                            <div id="blog-link-${numberOfIndex}"><h4>${item.title}</h4></div>
+                        </g:link>
                     </div>
                     <div class="panel-body">
                         <div id="author ${numberOfIndex}"><b>Author:</b> ${item.author}</div>
