@@ -8,6 +8,8 @@ class Blog {
     String author
     String description
 
+    static hasMany = [comments:Comment]
+
     static constraints = {
         title(blank: false)
         author(nullable: false)
