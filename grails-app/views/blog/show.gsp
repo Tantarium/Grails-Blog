@@ -60,6 +60,8 @@
                 </div>
             </div>
 
+            <a href="#PostComment">Jump To Comment Entry</a>
+
             <h3>Comments:</h3>
 
             <g:each in="${blog.comments.sort{dateCreated}}" status="commentNumber" var="com">
@@ -74,6 +76,8 @@
                     </div>
                 </div>
             </g:each>
+
+            <a name="PostComment"></a>
 
             <h3>Add Your Own Comment To This Blog:</h3>
 
