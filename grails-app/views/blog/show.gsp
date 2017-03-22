@@ -46,7 +46,7 @@
 
             <h3>Comments:</h3>
 
-            <g:each in="${blog.comments}" status="commentNumber" var="com">
+            <g:each in="${blog.comments.sort{dateCreated}}" status="commentNumber" var="com">
                 <div class="panel panel-default">
                     <div id="commenter" class="panel-body">
                         <b>Name: </b>${com.commenter}

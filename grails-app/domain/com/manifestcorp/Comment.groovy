@@ -1,6 +1,6 @@
 package com.manifestcorp
 
-class Comment {
+class Comment implements Comparable<Comment> {
 
     String commenter
     String commentText
@@ -15,5 +15,10 @@ class Comment {
 
     static mapping = {
         sort dateCreated: 'desc'
+    }
+
+    @Override
+    int compareTo(Comment o) {
+        return o.dateCreated.compareTo(dateCreated)
     }
 }
