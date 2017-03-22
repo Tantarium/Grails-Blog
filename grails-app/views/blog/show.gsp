@@ -59,8 +59,23 @@
                 </div>
             </g:each>
 
+            <g:form action="save" controller="Comment">
+                <f:with bean="comment">
+                    <div class="form-horizontal">
+                            <div class="form-group">
+                            <label class="control-label col-sm-1">Name: </label>
+                            <div class="col-sm-10"><g:textField name="commenter" /></div>
+                            <label class="control-label col-sm-1">Comment: </label>
+                            <div class="col-sm-10"><g:textArea name="commentText" /></div>
+                            <g:hiddenField name="blog.id" value="${blog.id}" />
+                        </div>
+                    </div>
+                    <fieldset class="buttons">
+                        <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                    </fieldset>
+                </f:with>
+            </g:form>
 
-            <a href="/comment/create?blog.id=${blog.id}">Add Comment to this blog</a>
 
             <g:form resource="${this.blog}" method="DELETE">
                 <fieldset class="buttons">
