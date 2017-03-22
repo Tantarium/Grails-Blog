@@ -43,6 +43,7 @@
                     ${blog.text}
                 </div>
             </div>
+
             <g:form action="save">
                 <div class="form-horizontal">
                     <div class="form-group">
