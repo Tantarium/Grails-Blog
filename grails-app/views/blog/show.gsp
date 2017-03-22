@@ -44,11 +44,23 @@
                 </div>
             </div>
 
+            <h3>Comments:</h3>
 
-
-            <g:each in="${commentList}" status="numberOfIndex" var="item">
-                ${item.commenter}
+            <g:each in="${blog.comments}" status="commentNumber" var="com">
+                <div class="panel panel-default">
+                    <div id="commenter" class="panel-body">
+                        <b>Name: </b>${com.commenter}
+                        <br />
+                        Date: ${com.dateCreated}
+                    </div>
+                    <div id="commentText" class="panel-body">
+                        ${com.commentText}
+                    </div>
+                </div>
             </g:each>
+
+
+            <a href="/comment/create?blog.id=${blog.id}">Add Comment to this blog</a>
 
             <g:form resource="${this.blog}" method="DELETE">
                 <fieldset class="buttons">
