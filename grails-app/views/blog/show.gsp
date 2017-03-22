@@ -53,8 +53,12 @@
                     <div class="col-sm-10"><g:textArea name="commentText" /></div>
                     </div>
                 </div>
+                <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
             </g:form>
 
+            <g:each in="${commentList}" status="numberOfIndex" var="item">
+                ${item.commenter}
+            </g:each>
 
             <g:form resource="${this.blog}" method="DELETE">
                 <fieldset class="buttons">
