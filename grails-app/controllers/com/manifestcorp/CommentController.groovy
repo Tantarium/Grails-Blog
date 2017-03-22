@@ -38,14 +38,16 @@ class CommentController {
         }
 
         comment.save flush:true
+        
+        redirect controller: 'blog', action: 'show', id: comment.blog.id
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'comment.label', default: 'Comment'), comment.id])
-                redirect comment
-            }
-            '*' { respond comment, [status: CREATED] }
-        }
+//        request.withFormat {
+//            form multipartForm {
+//                flash.message = message(code: 'default.created.message', args: [message(code: 'comment.label', default: 'Comment'), comment.id])
+//                redirect comment
+//            }
+//            '*' { respond comment, [status: CREATED] }
+//        }
     }
 
     def edit(Comment comment) {
