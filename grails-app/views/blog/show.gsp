@@ -16,31 +16,43 @@
                          <g:message code="default.home.label"/>
                      </a>
                 </li>
-                <li>
-                    <g:link action="create">
-                        <g:img dir="image" file="pen-and-paper.png" height="20" width="20" />
-                        <g:message code="default.new.label" args="[entityName]" />
-                         Entry
+                <sec:ifLoggedIn>
+                    <li>
+                        <g:link action="create">
+                            <g:img dir="image" file="pen-and-paper.png" height="20" width="20" />
+                            <g:message code="default.new.label" args="[entityName]" />
+                             Entry
+                         </g:link>
+                     </li>
+                 </sec:ifLoggedIn>
+                 <li>
+                     <g:link class="search" action="search">
+                         <g:img dir="images" file="icon.png" height="20" width="20" />
+                         Search
                      </g:link>
                  </li>
-                 <li>
-                    <g:link class="edit" action="edit" resource="${this.blog}">
-                        <g:img dir="image" file="scissors.png" height="20" width="20" />
-                        <g:message code="default.button.edit.label" default="Edit" /> Blog
-                    </g:link>
-                 </li>
-                 <li>
-                    <g:form resource="${this.blog}" method="DELETE">
-                        <button class="delete btn btn-danger" type="submit" onclick="return confirm('${message(code:
-                            'default.button.delete.confirm.message', default: 'Are you sure?')}');">
+                 <sec:ifLoggedIn>
+                     <li>
+                        <g:link class="edit" action="edit" resource="${this.blog}">
+                            <g:img dir="image" file="scissors.png" height="20" width="20" />
+                            <g:message code="default.button.edit.label" default="Edit" /> Blog
+                        </g:link>
+                     </li>
+                     <li>
+                        <g:form resource="${this.blog}" method="DELETE">
+                            <button class="delete btn btn-danger" type="submit" onclick="return confirm('${message(code:
+                                'default.button.delete.confirm.message', default: 'Are you sure?')}');">
 
-                            <g:img dir="image" file="Trash-Can.png" height="20" width="20" />
-                            Delete Blog
-                        </button>
-                    </g:form>
-                 </li>
+                                <g:img dir="image" file="Trash-Can.png" height="20" width="20" />
+                                Delete Blog
+                            </button>
+                        </g:form>
+                     </li>
+                 </sec:ifLoggedIn>
             </ul>
         </div>
+
+        <br />
 
 
         <div id="show-blog" class="content scaffold-show" role="main">

@@ -28,3 +28,13 @@ pre {
     color: DarkSlateBlue;
 
 }
+
+.floatingButton {
+    float: right;
+    margin-top: 0px;
+
+}
+
+.login/auth #floatingButton {
+    display: none;
+}

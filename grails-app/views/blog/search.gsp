@@ -1,6 +1,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <g:set var="entityName" value="${message(code: 'blog.label', default: 'Blog')}" />
         <meta name="layout" content="main" />
         <title>Blog Find</title>
         <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
@@ -15,6 +16,15 @@
                          <g:message code="default.home.label"/>
                      </a>
                 </li>
+                <sec:ifLoggedIn>
+                    <li>
+                        <g:link action="create">
+                            <g:img dir="image" file="pen-and-paper.png" height="20" width="20" />
+                            <g:message code="default.new.label" args="[entityName]" />
+                             Entry
+                        </g:link>
+                    </li>
+                </sec:ifLoggedIn>
             </ul>
         </div>
 

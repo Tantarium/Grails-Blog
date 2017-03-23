@@ -37,6 +37,28 @@
         </div>
     </div>
 
+    <div class="floatingButton">
+        <sec:ifLoggedIn>
+            <form name="logout" method="POST" action="${createLink(controller:'logout') }">
+                <button class="btn btn-primary">
+                    <g:img dir="images" file="logout.ico" height="20" width="20" />
+                     Log Out
+                 </button>
+            </form>
+        </sec:ifLoggedIn>
+    </div>
+
+    <div class="floatingButton">
+        <sec:ifNotLoggedIn>
+            <a href="${createLink(uri: '/login/auth')}">
+                <button class="btn btn-primary">
+                    <g:img dir="images" file="key.png" height="20" width="20" />
+                     Log In
+                </button>
+            </a>
+        </sec:ifNotLoggedIn>
+    </div>
+
     <g:layoutBody/>
 
     <div class="footer" role="contentinfo"></div>

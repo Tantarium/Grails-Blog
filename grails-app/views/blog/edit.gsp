@@ -21,8 +21,20 @@
                         <g:img dir="image" file="pen-and-paper.png" height="20" width="20" />
                         <g:message code="default.new.label" args="[entityName]" />
                          Entry
-                     </g:link>
-                 </li>
+                    </g:link>
+                </li>
+                <sec:ifLoggedIn>
+                    <li>
+                        <g:form resource="${this.blog}" method="DELETE">
+                            <button class="delete btn btn-danger" type="submit" onclick="return confirm('${message(code:
+                                'default.button.delete.confirm.message', default: 'Are you sure?')}');">
+
+                                <g:img dir="image" file="Trash-Can.png" height="20" width="20" />
+                                 Delete Blog
+                            </button>
+                        </g:form>
+                    </li>
+                </sec:ifLoggedIn>
             </ul>
         </div>
         <div id="edit-blog" class="content scaffold-edit" role="main">

@@ -16,6 +16,12 @@
                          <g:message code="default.home.label"/>
                      </a>
                 </li>
+                 <li>
+                     <g:link class="search" action="search">
+                         <g:img dir="images" file="icon.png" height="20" width="20" />
+                         Search
+                     </g:link>
+                 </li>
             </ul>
         </div>
         <div id="create-blog" class="content scaffold-create" role="main">
