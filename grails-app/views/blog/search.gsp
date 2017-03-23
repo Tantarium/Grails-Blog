@@ -4,7 +4,6 @@
         <g:set var="entityName" value="${message(code: 'blog.label', default: 'Blog')}" />
         <meta name="layout" content="main" />
         <title>Blog Find</title>
-        <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
     </head>
 
     <body>
