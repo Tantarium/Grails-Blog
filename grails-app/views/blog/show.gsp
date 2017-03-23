@@ -66,12 +66,12 @@
 
             <g:each in="${blog.comments.sort{dateCreated}}" status="commentNumber" var="com">
                 <div class="panel panel-default">
-                    <div id="commenter" class="panel-body">
-                        <b>Name: </b>${com.commenter}
+                    <div id="name_and_date_${commentNumber}" class="panel-body">
+                        <b>Name: </b><span id="commenter_${commentNumber}">${com.commenter}</span>
                         <br />
                         Date: ${com.dateCreated}
                     </div>
-                    <div id="commentText" class="panel-body">
+                    <div id="commentText_${commentNumber}" class="panel-body">
                         ${com.commentText}
                     </div>
                 </div>

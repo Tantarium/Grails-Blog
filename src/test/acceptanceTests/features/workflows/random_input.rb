@@ -15,4 +15,13 @@ module RandomInput
     @string_to_return
   end
 
+  def random_comment_text
+    @comment_text_to_return = 'Random Comment. Just fyi, I did not read this blog post.'
+    for i in 0..10
+      @comment_text_to_return = "#{@comment_text_to_return} #{random_string(5)}"
+    end
+    @comment_text_to_return = "#{@comment_text_to_return}."
+    @comment_text_to_return
+  end
+
 end
