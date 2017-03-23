@@ -28,7 +28,12 @@
                         Search
                     </g:link>
                 </li>
-
+                <li>
+                    <a href="/comment/">
+                        <g:img dir="images" file="icon.png" height="20" width="20" />
+                        Comment List
+                    </a>
+                </li>
             </ul>
         </div>
         <div id="list-blog" class="content scaffold-list" role="main">

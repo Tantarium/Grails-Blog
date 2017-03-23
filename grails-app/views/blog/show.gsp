@@ -22,6 +22,22 @@
                          Entry
                      </g:link>
                  </li>
+                 <li>
+                    <g:link class="edit" action="edit" resource="${this.blog}">
+                        <g:img dir="image" file="scissors.png" height="20" width="20" />
+                        <g:message code="default.button.edit.label" default="Edit" /> Blog
+                    </g:link>
+                 </li>
+                 <li>
+                    <g:form resource="${this.blog}" method="DELETE">
+                        <button class="delete btn btn-danger" type="submit" onclick="return confirm('${message(code:
+                            'default.button.delete.confirm.message', default: 'Are you sure?')}');">
+
+                            <g:img dir="image" file="Trash-Can.png" height="20" width="20" />
+                            Delete Blog
+                        </button>
+                    </g:form>
+                 </li>
             </ul>
         </div>
 
@@ -43,12 +59,43 @@
                     ${blog.text}
                 </div>
             </div>
-            <g:form resource="${this.blog}" method="DELETE">
-                <fieldset class="buttons">
-                    <g:link class="edit" action="edit" resource="${this.blog}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                </fieldset>
+
+            <a href="#PostComment">Jump To Comment Entry</a>
+
+            <h3>Comments:</h3>
+
+            <g:each in="${blog.comments.sort{dateCreated}}" status="commentNumber" var="com">
+                <div class="panel panel-default">
+                    <div id="name_and_date_${commentNumber}" class="panel-body">
+                        <b>Name: </b><span id="commenter_${commentNumber}">${com.commenter}</span>
+                        <br />
+                        Date: ${com.dateCreated}
+                    </div>
+                    <div id="commentText_${commentNumber}" class="panel-body">
+                        ${com.commentText}
+                    </div>
+                </div>
+            </g:each>
+
+            <a name="PostComment"></a>
+
+            <h3>Add Your Own Comment To This Blog:</h3>
+
+            <g:form action="save" controller="Comment">
+                <f:with bean="comment">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-1">Name: </label>
+                            <div class="col-sm-10"><g:textField name="commenter" /></div>
+                            <label class="control-label col-sm-1">Comment: </label>
+                            <div class="col-sm-10"><g:textArea name="commentText" /></div>
+                            <g:hiddenField name="blog.id" value="${blog.id}" />
+                            <div class="col-sm-2"><g:submitButton name="create" class="save" value="Post Comment" /></div>
+                        </div>
+                    </div>
+                </f:with>
             </g:form>
+
         </div>
     </body>
 </html>

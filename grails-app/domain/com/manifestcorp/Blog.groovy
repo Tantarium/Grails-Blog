@@ -7,6 +7,9 @@ class Blog {
     Date dateCreated
     String author
     String description
+    SortedSet comments
+
+    static hasMany = [comments:Comment]
 
     static constraints = {
         title(blank: false)

@@ -41,18 +41,18 @@ module ReadingBlog
 
   def compare_dates(date1, date2)
     @string_return = 'false'
-    year1 = Integer(date1[14..17])
-    month1 = Integer(date1[19..20])
-    day1 = Integer(date1[22..23])
-    hour1 = Integer(date1[25..26])
-    minute1 = Integer(date1[28..29])
+    year1 = date1[14..17].to_i
+    month1 = date1[19..20].to_i
+    day1 = date1[22..23].to_i
+    hour1 = date1[25..26].to_i
+    minute1 = date1[28..29].to_i
     second1 = date1[31..36].to_f
 
-    year2 = Integer(date2[14..17])
-    month2 = Integer(date2[19..20])
-    day2 = Integer(date2[22..23])
-    hour2 = Integer(date2[25..26])
-    minute2 = Integer(date2[28..29])
+    year2 = date2[14..17].to_i
+    month2 = date2[19..20].to_i
+    day2 = date2[22..23].to_i
+    hour2 = date2[25..26].to_i
+    minute2 = date2[28..29].to_i
     second2 = date2[31..36].to_f
 
     if year1 > year2
@@ -76,4 +76,19 @@ module ReadingBlog
     on_page(Search).title_of_top_result
   end
 
+  def add_comment_to_blog(name, text)
+    on_page(ViewBlog) do |page|
+      page.name = name
+      page.comment = text
+    end
+    on_page(ViewBlog).save_comment
+  end
+
+  def name_of_commenter_off_page
+    on_page(ViewBlog).first_commenter
+  end
+
+  def text_of_comment_off_page
+    on_page(ViewBlog).first_commentText
+  end
 end
