@@ -4,6 +4,7 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'blog.label', default: 'Blog')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
+        <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
     </head>
     <body>
         <a href="#list-blog" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -24,15 +25,9 @@
                  </li>
                 <li>
                     <g:link class="search" action="search">
-                        <g:img dir="images" file="search-icon.png" height="20" width="20" />
+                        <g:img dir="images" file="icon.png" height="20" width="20" />
                         Search
                     </g:link>
-                </li>
-                <li>
-                    <a href="/comment/">
-                        <g:img dir="images" file="icon.png" height="20" width="20" />
-                        Comment List
-                    </a>
                 </li>
             </ul>
         </div>

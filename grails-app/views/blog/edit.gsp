@@ -4,6 +4,7 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'blog.label', default: 'Blog')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
+        <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
     </head>
     <body>
         <a href="#edit-blog" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>

@@ -4,6 +4,7 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'blog.label', default: 'Blog')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
+        <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
     </head>
     <body>
         <a href="#show-blog" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -56,7 +57,7 @@
                     Date Created: ${blog.dateCreated}
                 </div>
                 <div id="text" class="panel-footer">
-                    ${blog.text}
+                    <pre>${blog.text}</pre>
                 </div>
             </div>
 
@@ -72,7 +73,7 @@
                         Date: ${com.dateCreated}
                     </div>
                     <div id="commentText_${commentNumber}" class="panel-body">
-                        ${com.commentText}
+                        <pre>${com.commentText}</pre>
                     </div>
                 </div>
             </g:each>

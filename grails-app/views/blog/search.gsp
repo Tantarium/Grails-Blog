@@ -3,6 +3,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
         <title>Blog Find</title>
+        <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
     </head>
 
     <body>
