@@ -71,43 +71,30 @@
                     <pre>${blog.text}</pre>
                 </div>
             </div>
-
-            <a href="#PostComment">Jump To Comment Entry</a>
-
-            <h3>Comments:</h3>
-
-            <g:each in="${blog.comments.sort{dateCreated}}" status="commentNumber" var="com">
-                <div class="panel panel-default">
-                    <div id="name_and_date_${commentNumber}" class="panel-body">
-                        <b>Name: </b><span id="commenter_${commentNumber}">${com.commenter}</span>
-                        <br />
-                        Date: ${com.dateCreated}
-                    </div>
-                    <div id="commentText_${commentNumber}" class="panel-body">
-                        <pre>${com.commentText}</pre>
-                    </div>
-                </div>
-            </g:each>
-
-            <a name="PostComment"></a>
+        </div>
 
             <h3>Add Your Own Comment To This Blog:</h3>
 
-            <g:form action="save" controller="Comment">
-                <f:with bean="comment">
-                    <div class="form-horizontal">
-                        <div class="form-group">
-                            <label class="control-label col-sm-1">Name: </label>
-                            <div class="col-sm-10"><g:textField name="commenter" /></div>
-                            <label class="control-label col-sm-1">Comment: </label>
-                            <div class="col-sm-10"><g:textArea name="commentText" /></div>
-                            <g:hiddenField name="blog.id" value="${blog.id}" />
-                            <div class="col-sm-2"><g:submitButton name="create" class="save" value="Post Comment" /></div>
-                        </div>
-                    </div>
-                </f:with>
-            </g:form>
 
-        </div>
+            <form onsubmit="jQuery.ajax({type:'POST',data:jQuery(this).serialize(),
+                url:'/blog/userComments',success:function(data,textStatus){jQuery('#commentUpdates').html(data);
+                },error:function(XMLHttpRequest,textStatus,errorThrown){}});return false"
+                method="post" id="commentForm">
+
+                <div class="form-group">
+                    <label class="control-label col-sm-1">Name: </label>
+                    <div class="col-sm-10"><g:textField name="commenter" /></div>
+                    <label class="control-label col-sm-1">Comment: </label>
+                    <div class="col-sm-10"><g:textArea name="commentText" /></div>
+                    <g:hiddenField name="blog.id" value="${blog.id}" />
+                    <div class="col-sm-2"><g:submitButton name="create" class="save" value="Post Comment" /></div>
+                </div>
+            </form>
+
+
+            <div id="commentUpdates">
+                <g:render template="results" model="['comments': blog.comments]"> </g:render>
+            </div>
+
     </body>
 </html>
