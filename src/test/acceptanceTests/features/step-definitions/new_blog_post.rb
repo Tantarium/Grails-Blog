@@ -32,4 +32,6 @@ And (/^the newly added blog post is at the top of the recent posts list$/) do
   expectedTitle = @title
   expect(get_title_of_top_entry).to eq expectedTitle
   delete_added_blog(@title)
+  visit_page(Home)
+  on_page(Home).logout
 end

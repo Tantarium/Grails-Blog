@@ -15,5 +15,6 @@ class Home
   div(:eighth_date, id: 'date 7')
   div(:ninth_date, id: 'date 8')
   div(:tenth_date, id: 'date 9')
+  button(:logout, id: 'logoutButton')
 
 end
