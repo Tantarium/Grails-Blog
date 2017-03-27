@@ -52,10 +52,23 @@
                     </g:eachError>
                 </ul>
             </g:hasErrors>
-            <g:form resource="${this.blog}" method="PUT">
+            <g:form resource="${this.blog}" method="PUT" name="blog">
                 <g:hiddenField name="version" value="${this.blog?.version}" />
                 <fieldset class="form">
-                    <f:all bean="blog"/>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-1">Title: </label>
+                            <div class="col-sm-10"><g:textArea name="title" value="${blog.title}" rows="1" /></div>
+                            <label class="control-label col-sm-1">Author: </label>
+                            <div class="col-sm-10"><g:textArea name="author" value="${blog.author}" rows="1" /></div>
+                            <label class="control-label col-sm-1">Description: </label>
+                            <div class="col-sm-10"><g:textArea name="description" value="${blog.description}" rows="2" /></div>
+                            <label class="control-label col-sm-1">Text: </label>
+                            <div class="col-sm-10">
+                                <g:textArea name="text" value="${blog.text}" rows="10"/>
+                            </div>
+                        </div>
+                    </div>
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />

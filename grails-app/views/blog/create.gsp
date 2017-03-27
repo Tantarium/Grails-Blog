@@ -39,15 +39,15 @@
             </g:hasErrors>
             <g:form action="save">
                 <div class="form-horizontal">
-                        <div class="form-group">
+                    <div class="form-group">
                         <label class="control-label col-sm-1">Title: </label>
-                        <div class="col-sm-10"><g:textField name="title" /></div>
+                        <div class="col-sm-10"><g:textArea name="title" rows="1" /></div>
                         <label class="control-label col-sm-1">Author: </label>
-                        <div class="col-sm-10"><g:textField name="author" /></div>
+                        <div class="col-sm-10"><g:textArea name="author" rows="1" /></div>
                         <label class="control-label col-sm-1">Description: </label>
-                        <div class="col-sm-10"><g:textField name="description" /></div>
+                        <div class="col-sm-10"><g:textArea name="description" rows="2" /></div>
                         <label class="control-label col-sm-1">Text: </label>
-                        <div class="col-sm-10"><g:textArea name="text" /></div>
+                        <div class="col-sm-10"><g:textArea name="text" rows="10" /></div>
                     </div>
                 </div>
                 <fieldset class="buttons">
