@@ -25,8 +25,32 @@ pre {
 
     font-family: "Times New Roman", Times, serif;
     font-size: 16px;
-    color: DarkSlateBlue;
+    color: #483D8B;
+    background-color: rgb(237, 242, 255);
 
+}
+
+
+
+.panel-default > .panel-heading {
+    background-color: #dce1ef;
+    color: DarkSlateBlue;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
+}
+
+.h2 {
+    color: DarkSlateBlue;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
+}
+
+.panel-default > .panel-body {
+    background-color: #eff7f9;
+}
+
+.panel-default > .panel-footer {
+    background-color: rgb(237, 242, 255);
 }
 
 .floatingButton {

@@ -33,7 +33,7 @@ html * {
 }
 
 body {
-    background: #ffffff;
+    background: #edfdff; /* was #ffffff */
     color: #333333;
     overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
     -moz-box-shadow: 0 0 0.3em #4D8618;
@@ -51,7 +51,7 @@ a:hover, a:active {
 
 h1, h2, h3 {
     font-weight: normal;
-    font-size: 1.25em;
+    font-size: 1.85em;
     margin: 0.8em 0 0.3em 0;
 }
 

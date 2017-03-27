@@ -53,7 +53,7 @@
                         <div id="date ${numberOfIndex}"><b>Date Created:</b> ${item.dateCreated}</div>
                     </div>
                     <div class="panel-footer">
-                        ${item.description}
+                        <pre>${item.description}</pre>
                     </div>
                 </div>
             </g:each>

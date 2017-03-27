@@ -381,13 +381,13 @@ body, html {
 }
 
 a {
-    color: #db4800;
+    color: #483D8B; /* Was #db4800 originally */
     text-decoration: underline;
 }
 
 a:hover {
-    color: #db4800;
-    text-decoration: none
+    color: #0fbca0; /* Was #db4800 originally */
+    text-decoration: underline
 }
 
 h1 {
