@@ -14,6 +14,9 @@
             <div id="commentText_${commentNumber}" class="panel-footer">
                 <pre>${com.commentText}</pre>
             </div>
+            <sec:ifLoggedIn>
+                <a href="/comment/show/${com.id}">Go to comment</a>
+            </sec:ifLoggedIn>
         </div>
     </g:each>
 </div>
