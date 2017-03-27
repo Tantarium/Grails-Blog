@@ -85,7 +85,7 @@
                     <label class="control-label col-sm-1">Name: </label>
                     <div class="col-sm-10"><g:textField name="commenter" /></div>
                     <label class="control-label col-sm-1">Comment: </label>
-                    <div class="col-sm-10"><g:textArea name="commentText" /></div>
+                    <div class="col-sm-10"><g:textArea name="commentText" rows="5" /></div>
                     <g:hiddenField name="blog.id" value="${blog.id}" />
                     <div class="col-sm-2"><g:submitButton name="create" class="save" value="Post Comment" /></div>
                 </div>

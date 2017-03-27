@@ -10,13 +10,16 @@
                 <b>Name: </b><span id="commenter_${commentNumber}">${com.commenter}</span>
                 <br />
                 Date: ${com.dateCreated}
+                <br />
+                <sec:ifLoggedIn>
+                    <a href="/comment/show/${com.id}">
+                        <button class="btn btn-default">Go To Comment</button>
+                    </a>
+                </sec:ifLoggedIn>
             </div>
             <div id="commentText_${commentNumber}" class="panel-footer">
                 <pre>${com.commentText}</pre>
             </div>
-            <sec:ifLoggedIn>
-                <a href="/comment/show/${com.id}">Go to comment</a>
-            </sec:ifLoggedIn>
         </div>
     </g:each>
 </div>
