@@ -45,6 +45,9 @@ pre {
 
 .panel-default > .panel-body {
     background-color: #eff7f9;
+    color: DarkSlateBlue;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16px;
 }
 
 .panel-default > .panel-footer {

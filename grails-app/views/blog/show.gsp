@@ -53,22 +53,22 @@
 
         <br />
 
-
-        <div id="show-blog" class="content scaffold-show" role="main">
-            <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <div class="panel panel-default">
-                <div id="title" class="panel-heading">
-                    <h2>${blog.title}</h2>
-                </div>
-                <div id="author&dateCreated" class="panel-body">
-                    Author: ${blog.author}
-                    <br />
-                    Date Created: ${blog.dateCreated}
-                </div>
-                <div id="text" class="panel-footer">
-                    <pre>${blog.text}</pre>
+        <div class="col-sm-12">
+            <div id="show-blog" class="content scaffold-show" role="main">
+                <g:if test="${flash.message}">
+                    <div class="message" role="status">${flash.message}</div>
+                </g:if>
+                <div class="panel panel-default">
+                    <div id="title" class="panel-heading">
+                        <h2>${blog.title}</h2>
+                    </div>
+                    <div id="author&dateCreated" class="panel-body">
+                        <div id="author ${numberOfIndex}"><b>Author:</b> ${blog.author}</div>
+                        <div id="date ${numberOfIndex}"><b>Date Created:</b> ${blog.dateCreated}</div>
+                    </div>
+                    <div id="text" class="panel-footer">
+                        <pre>${blog.text}</pre>
+                    </div>
                 </div>
             </div>
         </div>

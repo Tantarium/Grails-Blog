@@ -13,7 +13,7 @@
                 <br />
                 <sec:ifLoggedIn>
                     <a href="/comment/show/${com.id}">
-                        <button class="btn btn-default">Go To Comment</button>
+                        <button class="btn btn-info">Go To Comment</button>
                     </a>
                 </sec:ifLoggedIn>
             </div>

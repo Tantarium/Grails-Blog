@@ -28,17 +28,18 @@
         </div>
 
         <br />
+        <div class="col-sm-12">
+            <h2>Search For Blog Entries</h2>
 
-        <h2>Search For Blog Entries</h2>
+            <g:form controller="blog" method="get" >
+                <input id="searchValue" type='text' name='value' value="${value}" />
+                <g:actionSubmit id="submitButton" value="Search" />
+            </g:form>
 
-        <g:form controller="blog" method="get" >
-            <input id="searchValue" type='text' name='value' value="${value}" />
-            <g:actionSubmit id="submitButton" value="Search" />
-        </g:form>
+            <br />
 
-        <br />
-
-        Search Results: <br />
+            Search Results: <br />
+        </div>
 
         <div class="col-sm-12">
             <g:each var="item" status="numberOfIndex" in="${blogs}">

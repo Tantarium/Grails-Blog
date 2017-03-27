@@ -41,22 +41,24 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
 
-            <g:each in="${blogList}" status="numberOfIndex" var="item">
-                <div class="panel panel-default">
-                    <div id="Row ${numberOfIndex}" class="panel-heading">
-                        <g:link mapping="blogLink" params="[id: item.id,title: seo.convert(value:item.title)]">
-                            <div id="blog-link-${numberOfIndex}"><h4>${item.title}</h4></div>
-                        </g:link>
+            <div class="col-sm-12">
+                <g:each in="${blogList}" status="numberOfIndex" var="item">
+                    <div class="panel panel-default">
+                        <div id="Row ${numberOfIndex}" class="panel-heading">
+                            <g:link mapping="blogLink" params="[id: item.id,title: seo.convert(value:item.title)]">
+                                <div id="blog-link-${numberOfIndex}"><h4>${item.title}</h4></div>
+                            </g:link>
+                        </div>
+                        <div class="panel-body">
+                            <div id="author ${numberOfIndex}"><b>Author:</b> ${item.author}</div>
+                            <div id="date ${numberOfIndex}"><b>Date Created:</b> ${item.dateCreated}</div>
+                        </div>
+                        <div class="panel-footer">
+                            <pre>${item.description}</pre>
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <div id="author ${numberOfIndex}"><b>Author:</b> ${item.author}</div>
-                        <div id="date ${numberOfIndex}"><b>Date Created:</b> ${item.dateCreated}</div>
-                    </div>
-                    <div class="panel-footer">
-                        <pre>${item.description}</pre>
-                    </div>
-                </div>
-            </g:each>
+                </g:each>
+            </div>
 
             <div class="pagination">
                 <g:paginate max="10" total="${blogCount ?: 0}" />
