@@ -15,27 +15,26 @@
                          <g:message code="default.home.label" />
                      </a>
                 </li>
-                <li>
-                    <g:link action="create">
-                        <g:img dir="image" file="pen-and-paper.png" height="20" width="20" />
-                        <g:message code="default.new.label" args="[entityName]" />
-                         Entry
-                     </g:link>
-                 </li>
+                <sec:ifLoggedIn>
+                    <li>
+                        <g:link action="create">
+                            <g:img dir="image" file="pen-and-paper.png" height="20" width="20" />
+                            <g:message code="default.new.label" args="[entityName]" />
+                             Entry
+                         </g:link>
+                     </li>
+                 </sec:ifLoggedIn>
                 <li>
                     <g:link class="search" action="search">
-                        <g:img dir="images" file="search-icon.png" height="20" width="20" />
+                        <g:img dir="images" file="icon.png" height="20" width="20" />
                         Search
                     </g:link>
                 </li>
-                <li>
-                    <a href="/comment/">
-                        <g:img dir="images" file="icon.png" height="20" width="20" />
-                        Comment List
-                    </a>
-                </li>
             </ul>
         </div>
+
+
+
         <div id="list-blog" class="content scaffold-list" role="main">
             <h1>Blog Entries</h1>
             <g:if test="${flash.message}">

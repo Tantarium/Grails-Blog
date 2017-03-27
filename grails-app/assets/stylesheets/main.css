@@ -236,8 +236,8 @@ select[multiple] {
 }
 
 textarea {
-    width: 250px;
-    height: 150px;
+    width: 100%;
+    height: auto;
     overflow: auto; /* IE always renders vertical scrollbar without this */
     vertical-align: top;
 }

@@ -20,6 +20,8 @@ class BlogController {
         respond blog
     }
 
+
+
     def create() {
         respond new Blog(params)
     }
@@ -96,6 +98,23 @@ class BlogController {
             }
             '*'{ render status: NO_CONTENT }
         }
+    }
+
+    @Secured('permitAll')
+    def userComments() {
+        Blog blog = Blog.findByIdLike(Integer.parseInt(params.blog.id))
+
+        Comment comment = new Comment();
+        comment.blog = blog;
+        comment.commentText = params.commentText;
+        comment.commenter = params.commenter;
+        comment.dateCreated = new Date()
+
+        blog.comments.add(comment);
+
+        blog.save flush:true
+
+        render(template:'results', model:[comments: blog.comments])
     }
 
     @Secured('permitAll')

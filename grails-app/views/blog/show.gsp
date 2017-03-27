@@ -15,31 +15,43 @@
                          <g:message code="default.home.label"/>
                      </a>
                 </li>
-                <li>
-                    <g:link action="create">
-                        <g:img dir="image" file="pen-and-paper.png" height="20" width="20" />
-                        <g:message code="default.new.label" args="[entityName]" />
-                         Entry
+                <sec:ifLoggedIn>
+                    <li>
+                        <g:link action="create">
+                            <g:img dir="image" file="pen-and-paper.png" height="20" width="20" />
+                            <g:message code="default.new.label" args="[entityName]" />
+                             Entry
+                         </g:link>
+                     </li>
+                 </sec:ifLoggedIn>
+                 <li>
+                     <g:link class="search" action="search">
+                         <g:img dir="images" file="icon.png" height="20" width="20" />
+                         Search
                      </g:link>
                  </li>
-                 <li>
-                    <g:link class="edit" action="edit" resource="${this.blog}">
-                        <g:img dir="image" file="scissors.png" height="20" width="20" />
-                        <g:message code="default.button.edit.label" default="Edit" /> Blog
-                    </g:link>
-                 </li>
-                 <li>
-                    <g:form resource="${this.blog}" method="DELETE">
-                        <button class="delete btn btn-danger" type="submit" onclick="return confirm('${message(code:
-                            'default.button.delete.confirm.message', default: 'Are you sure?')}');">
+                 <sec:ifLoggedIn>
+                     <li>
+                        <g:link class="edit" action="edit" resource="${this.blog}">
+                            <g:img dir="image" file="scissors.png" height="20" width="20" />
+                            <g:message code="default.button.edit.label" default="Edit" /> Blog
+                        </g:link>
+                     </li>
+                     <li>
+                        <g:form resource="${this.blog}" method="DELETE">
+                            <button class="delete btn btn-danger" type="submit" onclick="return confirm('${message(code:
+                                'default.button.delete.confirm.message', default: 'Are you sure?')}');">
 
-                            <g:img dir="image" file="Trash-Can.png" height="20" width="20" />
-                            Delete Blog
-                        </button>
-                    </g:form>
-                 </li>
+                                <g:img dir="image" file="Trash-Can.png" height="20" width="20" />
+                                Delete Blog
+                            </button>
+                        </g:form>
+                     </li>
+                 </sec:ifLoggedIn>
             </ul>
         </div>
+
+        <br />
 
 
         <div id="show-blog" class="content scaffold-show" role="main">
@@ -56,46 +68,33 @@
                     Date Created: ${blog.dateCreated}
                 </div>
                 <div id="text" class="panel-footer">
-                    ${blog.text}
+                    <pre>${blog.text}</pre>
                 </div>
             </div>
-
-            <a href="#PostComment">Jump To Comment Entry</a>
-
-            <h3>Comments:</h3>
-
-            <g:each in="${blog.comments.sort{dateCreated}}" status="commentNumber" var="com">
-                <div class="panel panel-default">
-                    <div id="name_and_date_${commentNumber}" class="panel-body">
-                        <b>Name: </b><span id="commenter_${commentNumber}">${com.commenter}</span>
-                        <br />
-                        Date: ${com.dateCreated}
-                    </div>
-                    <div id="commentText_${commentNumber}" class="panel-body">
-                        ${com.commentText}
-                    </div>
-                </div>
-            </g:each>
-
-            <a name="PostComment"></a>
+        </div>
 
             <h3>Add Your Own Comment To This Blog:</h3>
 
-            <g:form action="save" controller="Comment">
-                <f:with bean="comment">
-                    <div class="form-horizontal">
-                        <div class="form-group">
-                            <label class="control-label col-sm-1">Name: </label>
-                            <div class="col-sm-10"><g:textField name="commenter" /></div>
-                            <label class="control-label col-sm-1">Comment: </label>
-                            <div class="col-sm-10"><g:textArea name="commentText" /></div>
-                            <g:hiddenField name="blog.id" value="${blog.id}" />
-                            <div class="col-sm-2"><g:submitButton name="create" class="save" value="Post Comment" /></div>
-                        </div>
-                    </div>
-                </f:with>
-            </g:form>
 
-        </div>
+            <form onsubmit="jQuery.ajax({type:'POST',data:jQuery(this).serialize(),
+                url:'/blog/userComments',success:function(data,textStatus){jQuery('#commentUpdates').html(data);
+                },error:function(XMLHttpRequest,textStatus,errorThrown){}});return false"
+                method="post" id="commentForm">
+
+                <div class="form-group">
+                    <label class="control-label col-sm-1">Name: </label>
+                    <div class="col-sm-10"><g:textField name="commenter" /></div>
+                    <label class="control-label col-sm-1">Comment: </label>
+                    <div class="col-sm-10"><g:textArea name="commentText" rows="5" /></div>
+                    <g:hiddenField name="blog.id" value="${blog.id}" />
+                    <div class="col-sm-2"><g:submitButton name="create" class="save" value="Post Comment" /></div>
+                </div>
+            </form>
+
+
+            <div id="commentUpdates">
+                <g:render template="results" model="['comments': blog.comments]"> </g:render>
+            </div>
+
     </body>
 </html>

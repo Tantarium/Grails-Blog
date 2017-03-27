@@ -5,7 +5,7 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Transactional(readOnly = true)
-@Secured('permitAll')
+@Secured('ROLE_USER')
 class CommentController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -19,11 +19,13 @@ class CommentController {
         respond comment
     }
 
+    @Secured('permitAll')
     def create() {
         respond new Comment(params)
     }
 
     @Transactional
+    @Secured('permitAll')
     def save(Comment comment) {
         if (comment == null) {
             transactionStatus.setRollbackOnly()
@@ -85,7 +87,7 @@ class CommentController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'comment.label', default: 'Comment'), comment.id])
-                redirect action:"index", method:"GET"
+                redirect controller: 'Blog', action: 'show', id: comment.blog.id
             }
             '*'{ render status: NO_CONTENT }
         }
