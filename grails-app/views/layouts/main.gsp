@@ -3,8 +3,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <asset:link rel="icon" href="lp3.png" type="image/x-ico" />
     <title>
-        <g:layoutTitle default="Grails"/>
+        Lp3's Blog
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
@@ -25,8 +26,8 @@
                 </button>
                 <a class="navbar-brand" href="/">
                     <i class="fa grails-icon"">
-                        <asset:image src="grails-cupsonly-logo-white.svg"/>
-                    </i> Grails Blog
+                        <asset:image src="planet.jpg" />
+                    </i> The Blog of The <abbr title="Larry Pohto III">Lp3</abbr>
                 </a>
             </div>
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
@@ -35,6 +36,28 @@
                 </ul>
             </div>
         </div>
+    </div>
+
+    <div class="floatingButton">
+        <sec:ifLoggedIn>
+            <form name="logout" method="POST" action="${createLink(controller:'logout') }">
+                <button class="btn btn-primary">
+                    <g:img dir="images" file="logout.ico" height="20" width="20" />
+                     Log Out
+                 </button>
+            </form>
+        </sec:ifLoggedIn>
+    </div>
+
+    <div class="floatingButton">
+        <sec:ifNotLoggedIn>
+            <a href="${createLink(uri: '/login/auth')}">
+                <button class="btn btn-primary">
+                    <g:img dir="images" file="key.png" height="20" width="20" />
+                     Log In
+                </button>
+            </a>
+        </sec:ifNotLoggedIn>
     </div>
 
     <g:layoutBody/>

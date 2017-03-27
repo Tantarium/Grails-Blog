@@ -9,14 +9,11 @@ import spock.lang.Specification
 @TestFor(Blog)
 class BlogSpec extends Specification {
 
-    def setup() {
-    }
+    def setup() {}
 
-    def cleanup() {
-    }
+    def cleanup() {}
 
     void "test something"() {
-        expect:"fix me"
-            true == false
+        //TODO write tests for constraints
     }
 }

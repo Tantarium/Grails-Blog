@@ -9,8 +9,18 @@ class UrlMappings {
             }
         }
 
-        "/"(controller: 'blog', action: 'index')
+        name blogLink: "/blog/show/$id/$title?" {
+            controller = 'blog'
+            action = 'show'
+        }
+
+        "/"(controller: 'Blog')
         "500"(view:'/error')
         "404"(view:'/notFound')
+        "/comment"(controller: 'Blog')
+        "/comment/index"(controller: 'Blog')
+        "/comment/create"(controller: 'Blog')
+//        "/comment/show/*"(controller: 'Blog')
+        "/comment/edit/*"(controller: 'Blog')
     }
 }

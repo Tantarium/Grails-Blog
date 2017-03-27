@@ -2,20 +2,25 @@ package com.manifestcorp
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.plugin.springsecurity.annotation.Secured
 
 @Transactional(readOnly = true)
+@Secured('ROLE_USER')
 class BlogController {
-
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    @Secured('permitAll')
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Blog.list(params), model:[blogCount: Blog.count()]
     }
 
+    @Secured('permitAll')
     def show(Blog blog) {
         respond blog
     }
+
+
 
     def create() {
         respond new Blog(params)
@@ -39,7 +44,7 @@ class BlogController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'blog.label', default: 'Blog'), blog.id])
+                flash.message = message(code: 'Blog created')
                 redirect blog
             }
             '*' { respond blog, [status: CREATED] }
@@ -95,9 +100,26 @@ class BlogController {
         }
     }
 
-    def search = {
+    @Secured('permitAll')
+    def userComments() {
+        Blog blog = Blog.findByIdLike(Integer.parseInt(params.blog.id))
+
+        Comment comment = new Comment();
+        comment.blog = blog;
+        comment.commentText = params.commentText;
+        comment.commenter = params.commenter;
+        comment.dateCreated = new Date()
+
+        blog.comments.add(comment);
+
+        blog.save flush:true
+
+        render(template:'results', model:[comments: blog.comments])
+    }
+
+    @Secured('permitAll')
+    def search() {
         def blogs = Blog.findAllByTitleLike("%${params.value}%")
-        println "Size of list: " + blogs.size()
         render(view:'search', model: [value: params.value, blogs: blogs])
     }
 
