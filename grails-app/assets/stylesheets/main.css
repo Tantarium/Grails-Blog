@@ -221,10 +221,11 @@ label {
 }
 
 input, select, textarea {
-    background-color: #fcfcfc;
+    background-color: rgb(237, 242, 255);
     border: 1px solid #cccccc;
     font-size: 1em;
     padding: 0.2em 0.4em;
+    color: #483D8B;
 }
 
 select {
@@ -249,12 +250,13 @@ input[type=checkbox], input[type=radio] {
 }
 
 input:focus, select:focus, textarea:focus {
-    background-color: #ffffff;
+    background-color: rgb(237, 242, 255);
     border: 1px solid #eeeeee;
     outline: 0;
     -moz-box-shadow: 0 0 0.5em #ffffff;
     -webkit-box-shadow: 0 0 0.5em #ffffff;
     box-shadow: 0 0 0.5em #ffffff;
+    color: #483D8B;
 }
 
 .required-indicator {
