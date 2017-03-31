@@ -119,8 +119,14 @@ class BlogController {
 
     @Secured('permitAll')
     def search() {
-        def blogs = Blog.findAllByTitleLike("%${params.value}%")
+        def blogs = Blog.findAllByTitleIlike("%${params.value}%")
         render(view:'search', model: [value: params.value, blogs: blogs])
+    }
+
+    @Secured('permitAll')
+    def searchResults() {
+        def blogs = Blog.findAllByTitleIlike("%${params.value}%")
+        render(template:'searchResults', model: [value: params.value, blogs: blogs])
     }
 
     protected void notFound() {
