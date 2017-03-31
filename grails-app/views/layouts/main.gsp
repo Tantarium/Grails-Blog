@@ -41,7 +41,7 @@
     <div class="floatingButton">
         <sec:ifLoggedIn>
             <form name="logout" method="POST" action="${createLink(controller:'logout') }">
-                <button class="btn btn-primary">
+                <button id="logoutButton" class="btn btn-primary">
                     <g:img dir="images" file="logout.ico" height="20" width="20" />
                      Log Out
                  </button>
@@ -52,7 +52,7 @@
     <div class="floatingButton">
         <sec:ifNotLoggedIn>
             <a href="${createLink(uri: '/login/auth')}">
-                <button class="btn btn-primary">
+                <button id="loginButton" class="btn btn-primary">
                     <g:img dir="images" file="key.png" height="20" width="20" />
                      Log In
                 </button>

@@ -13,6 +13,8 @@ Given (/^My favorite blogger has been very active$/) do
   goto_login_page
   login('Lp3','password')
   create_ten_blog_posts
+  visit_page(Home)
+  on_page(Home).logout
 end
 
 Then (/^then I should see a summary of my favorite blogger's 10 most recent posts in reverse order$/) do
@@ -27,17 +29,16 @@ Then (/^then I should see a summary of my favorite blogger's 10 most recent post
   expect(compare_dates(array[6], array[7])).to eq expected
   expect(compare_dates(array[7], array[8])).to eq expected
   expect(compare_dates(array[8], array[9])).to eq expected
+
+  goto_login_page
+  login('Lp3','password')
+  visit_page(Home)
   clean_up_blogs_created
+  visit_page(Home)
+  on_page(Home).logout
 end
 
 Given (/^I visit the blog for my favorite blogger$/) do
-  goto_login_page
-  login('Lp3','password')
-  click_on_create_link
-  @title = "Random Title of Blog #{random_string(5)}"
-  add_title_and_text(@title)
-  click_on_create_button
-
   visit_page(Home)
 end
 
@@ -53,7 +54,6 @@ end
 Then (/^I should see the blog post$/) do
   expected_title = @title
   expect(get_title_off_show_page).to eq(expected_title)
-  delete_added_blog(@title)
 end
 
 When (/^I search for a blog post$/) do
@@ -68,8 +68,6 @@ end
 Then (/^I should see posts with that value in the title$/) do
   expected = @top_title_from_page
   expect(get_title_of_first_result).to eq(expected)
-  visit_page(Home)
-  delete_added_blog(@title)
 end
 
 Then (/^the url should contain information about the post$/) do
@@ -78,8 +76,5 @@ Then (/^the url should contain information about the post$/) do
   url_array = current_url.split('/')
   title_from_page = url_array.last
   expect(title_from_page).to eq(title)
-
-  visit_page(Home)
-  delete_added_blog(get_title_off_page)
 end
 
