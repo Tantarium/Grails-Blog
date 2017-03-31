@@ -125,7 +125,7 @@ class BlogController {
 
     @Secured('permitAll')
     def searchResults() {
-        def blogs = Blog.findAllByTitleIlike("%${params.value}%")
+        def blogs = Blog.findAllByTitleIlike("%${params.value.trim()}%")
         render(template:'searchResults', model: [value: params.value, blogs: blogs])
     }
 
