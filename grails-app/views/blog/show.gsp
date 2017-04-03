@@ -76,10 +76,16 @@
             <h3>Add Your Own Comment To This Blog:</h3>
 
 
-            <form onsubmit="jQuery.ajax({type:'POST',data:jQuery(this).serialize(),
-                url:'/blog/userComments',success:function(data,textStatus){jQuery('#commentUpdates').html(data);
-                },error:function(XMLHttpRequest,textStatus,errorThrown){}});return false"
-                method="post" id="commentForm">
+            <form onsubmit="jQuery.ajax({
+                type:'POST',
+                data:jQuery(this).serialize(),
+                url:'/blog/userComments',
+                success:function(data,textStatus){
+                    jQuery('#commentUpdates').html(data);
+                },
+                error:function(XMLHttpRequest,textStatus,errorThrown){}
+                });
+                return false" method="post" id="commentForm">
 
                 <div class="form-group">
                     <label class="control-label col-sm-1">Name: </label>
