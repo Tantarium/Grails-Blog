@@ -42,7 +42,7 @@ class BlogController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'Blog created')
+                flash.message = message(code: blog.title + ' blog post created.')
                 redirect blog
             }
             '*' { respond blog, [status: CREATED] }
@@ -71,7 +71,7 @@ class BlogController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'blog.label', default: 'Blog'), blog.id])
+                flash.message = message(code: blog.title + ' updated.')
                 redirect blog
             }
             '*'{ respond blog, [status: OK] }
@@ -90,7 +90,7 @@ class BlogController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'blog.label', default: 'Blog'), blog.id])
+                flash.message = message(code: blog.title + ' has been successfully deleted.')
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }

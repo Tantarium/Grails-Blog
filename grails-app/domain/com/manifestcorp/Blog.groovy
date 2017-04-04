@@ -14,7 +14,7 @@ class Blog {
     static constraints = {
         title(blank: false)
         author(nullable: false)
-        description(nullable: false)
+        description(nullable: false, size: 0..5000)
         text(widget:'textarea', nullable: false, size: 0..2147483646)
     }
 
