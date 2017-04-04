@@ -9,11 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class CommentController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Comment.list(params), model:[commentCount: Comment.count()]
-    }
+    
 
     def show(Comment comment) {
         respond comment
@@ -42,35 +38,6 @@ class CommentController {
         comment.save flush:true
 
         redirect controller: 'blog', action: 'show', id: comment.blog.id
-    }
-
-    def edit(Comment comment) {
-        respond comment
-    }
-
-    @Transactional
-    def update(Comment comment) {
-        if (comment == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
-            return
-        }
-
-        if (comment.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond comment.errors, view:'edit'
-            return
-        }
-
-        comment.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'comment.label', default: 'Comment'), comment.id])
-                redirect comment
-            }
-            '*'{ respond comment, [status: OK] }
-        }
     }
 
     @Transactional
