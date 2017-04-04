@@ -12,9 +12,14 @@
                 Date: ${com.dateCreated}
                 <br />
                 <sec:ifLoggedIn>
-                    <a href="/comment/show/${com.id}">
-                        <button class="btn btn-info">Go To Comment</button>
-                    </a>
+                    <g:form controller="comment" resource="${com}" method="DELETE">
+                        <button class="delete btn btn-danger" type="submit" onclick="return confirm('${message(code:
+                            'default.button.delete.confirm.message', default: 'Are you sure?')}');">
+
+                            <g:img dir="image" file="Trash-Can.png" height="20" width="20" />
+                             Delete Comment
+                        </button>
+                    </g:form>
                 </sec:ifLoggedIn>
             </div>
             <div id="commentText_${commentNumber}" class="panel-footer">
