@@ -100,15 +100,23 @@ class BlogController {
     @Secured('permitAll')
     def userComments() {
         Blog blog = Blog.findByIdLike(Integer.parseInt(params.blog.id))
-        Comment comment = new Comment();
-        comment.blog = blog;
-        comment.commentText = params.commentText;
-        comment.commenter = params.commenter;
-        comment.dateCreated = new Date()
-        blog.comments.add(comment);
-        blog.save flush:true
+        if (params.commentText != "" && params.commenter != null) {
+            Comment comment = new Comment()
+            comment.blog = blog
+            comment.commentText = params.commentText
+            comment.commenter = params.commenter
+            comment.dateCreated = new Date()
+            blog.comments.add(comment)
 
-        render(template:'results', model:[comments: blog.comments])
+            blog.save flush: true
+
+            render(template: 'results', model: [comments: blog.comments])
+        }
+        else {
+            render(text: '<br /><br /><br /><br /><br /><br /><br />' +
+                    '<font color="red">Comment text or commenter name should not be empty!</font>')
+            render(template: 'results', model: [comments: blog.comments])
+        }
     }
 
     @Secured('permitAll')

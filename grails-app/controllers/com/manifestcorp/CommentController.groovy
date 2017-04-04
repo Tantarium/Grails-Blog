@@ -9,7 +9,6 @@ import grails.plugin.springsecurity.annotation.Secured
 class CommentController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-    
 
     def show(Comment comment) {
         respond comment
@@ -42,7 +41,6 @@ class CommentController {
 
     @Transactional
     def delete(Comment comment) {
-
         if (comment == null) {
             transactionStatus.setRollbackOnly()
             notFound()
