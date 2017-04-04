@@ -20,8 +20,6 @@ class BlogController {
         respond blog
     }
 
-
-
     def create() {
         respond new Blog(params)
     }
@@ -82,7 +80,6 @@ class BlogController {
 
     @Transactional
     def delete(Blog blog) {
-
         if (blog == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -103,15 +100,12 @@ class BlogController {
     @Secured('permitAll')
     def userComments() {
         Blog blog = Blog.findByIdLike(Integer.parseInt(params.blog.id))
-
         Comment comment = new Comment();
         comment.blog = blog;
         comment.commentText = params.commentText;
         comment.commenter = params.commenter;
         comment.dateCreated = new Date()
-
         blog.comments.add(comment);
-
         blog.save flush:true
 
         render(template:'results', model:[comments: blog.comments])
@@ -119,8 +113,7 @@ class BlogController {
 
     @Secured('permitAll')
     def search() {
-        def blogs = Blog.findAllByTitleIlike("%${params.value}%")
-        render(view:'search', model: [value: params.value, blogs: blogs])
+        render(view:'search')
     }
 
     @Secured('permitAll')
