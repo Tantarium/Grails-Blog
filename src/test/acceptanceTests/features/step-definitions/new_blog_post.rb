@@ -23,7 +23,7 @@ When (/^I publish a new blog post$/) do
 end
 
 Then (/^I am notified that the blog post was successfully added$/) do
-  expectedMessage = 'Blog created'
+  expectedMessage = "#{@title} blog post created."
   expect(success_message_from_page).to eq expectedMessage
 end
 

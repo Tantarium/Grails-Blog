@@ -20,8 +20,6 @@ class BlogController {
         respond blog
     }
 
-
-
     def create() {
         respond new Blog(params)
     }
@@ -44,7 +42,7 @@ class BlogController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'Blog created')
+                flash.message = message(code: blog.title + ' blog post created.')
                 redirect blog
             }
             '*' { respond blog, [status: CREATED] }
@@ -73,7 +71,7 @@ class BlogController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'blog.label', default: 'Blog'), blog.id])
+                flash.message = message(code: blog.title + ' updated.')
                 redirect blog
             }
             '*'{ respond blog, [status: OK] }
@@ -82,7 +80,6 @@ class BlogController {
 
     @Transactional
     def delete(Blog blog) {
-
         if (blog == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -93,7 +90,7 @@ class BlogController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'blog.label', default: 'Blog'), blog.id])
+                flash.message = message(code: blog.title + ' has been successfully deleted.')
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -103,24 +100,28 @@ class BlogController {
     @Secured('permitAll')
     def userComments() {
         Blog blog = Blog.findByIdLike(Integer.parseInt(params.blog.id))
+        if (params.commentText != "" && params.commenter != null) {
+            Comment comment = new Comment()
+            comment.blog = blog
+            comment.commentText = params.commentText
+            comment.commenter = params.commenter
+            comment.dateCreated = new Date()
+            blog.comments.add(comment)
 
-        Comment comment = new Comment();
-        comment.blog = blog;
-        comment.commentText = params.commentText;
-        comment.commenter = params.commenter;
-        comment.dateCreated = new Date()
+            blog.save flush: true
 
-        blog.comments.add(comment);
-
-        blog.save flush:true
-
-        render(template:'results', model:[comments: blog.comments])
+            render(template: 'results', model: [comments: blog.comments])
+        }
+        else {
+            render(text: '<br /><br /><br /><br /><br /><br /><br />' +
+                    '<font color="red">Comment text or commenter name should not be empty!</font>')
+            render(template: 'results', model: [comments: blog.comments])
+        }
     }
 
     @Secured('permitAll')
     def search() {
-        def blogs = Blog.findAllByTitleIlike("%${params.value}%")
-        render(view:'search', model: [value: params.value, blogs: blogs])
+        render(view:'search')
     }
 
     @Secured('permitAll')
